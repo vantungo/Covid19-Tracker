@@ -14,8 +14,9 @@ function News(props) {
   return (
     <MainLayout>
       <Container>
-        <Typography variant="h2">News</Typography>
-        <ListNews listNews={news} />
+        <div style={{marginTop:"2em"}}>
+          <ListNews listNews={news} />
+        </div>
       </Container>
     </MainLayout>
   );
