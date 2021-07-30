@@ -6,6 +6,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import CountryDetail from "./components/CountryDetail/CountryDetail";
+import News from "./components/News/News";
+
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <AuthRoute exact path="/login" component={Login} />
         <PrivateRoute exact path="/" component={Home} />
         <PrivateRoute exact path="/detail/:country" component={CountryDetail} />
+        <PrivateRoute exact path="/news" component={News} />
+
       </Switch>
     </Router>
   );
