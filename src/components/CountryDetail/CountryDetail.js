@@ -18,10 +18,12 @@ function CountryDetail(props) {
   }, [country]);
 
   const getReportCountry = (country) => {
-    getCountryDetail(country).then((res) => {
-      setCountryDetail(res.data);
-      setCountryInfo(res.data.countryInfo);
-    });
+    getCountryDetail(country)
+      .then((res) => {
+        setCountryDetail(res.data);
+        setCountryInfo(res.data.countryInfo);
+      })
+      .catch((error) => alert(error));
   };
 
   useEffect(() => {
@@ -29,9 +31,9 @@ function CountryDetail(props) {
   }, [country]);
 
   const getReportCountryHistory = (country) => {
-    getCountryHisTory(country).then((res) =>
-      setReportCountryHistory(res.data.timeline)
-    );
+    getCountryHisTory(country)
+      .then((res) => setReportCountryHistory(res.data.timeline))
+      .catch((error) => alert(error));
   };
 
   return (

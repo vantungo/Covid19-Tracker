@@ -8,12 +8,15 @@ function DataTable(props) {
   const [countries, setCountries] = useState([]);
   const history = useHistory();
 
-
   useEffect(() => {
-    getCountries().then((res) => {
-      setCountries(res.data);
-    });
+    getAllCountries();
   }, []);
+
+  const getAllCountries = () => {
+    getCountries()
+      .then((res) => setCountries(res.data))
+      .catch((error) => alert(error));
+  };
 
   const handleOnChange = (e, value) => {
     history.push(`/detail/${value.country.toLowerCase()}`)

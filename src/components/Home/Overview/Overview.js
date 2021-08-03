@@ -14,6 +14,10 @@ function Overview(props) {
   const [reportGlobal, setReportGlobal] = useState([]);
 
   useEffect(() => {
+    getAllCountries();
+  }, []);
+
+  const getAllCountries = () => {
     getCountries()
       .then((res) => {
         const data = transformToMapData(res.data);
@@ -27,19 +31,33 @@ function Overview(props) {
       .catch((error) => {
         alert(error);
       });
-  }, []);
+  };
 
   useEffect(() => {
-    getAllHistory().then((res) => {
-      setReportHistory(res.data);
-    });
+    getAllReportHistory();
   }, []);
 
+  const getAllReportHistory = () => {
+    getAllHistory()
+      .then((res) => {
+        setReportHistory(res.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   useEffect(() => {
-    getAll().then((res) => {
-      setReportGlobal(res.data);
-    });
+    getReportGlobal();
   }, []);
+
+  const getReportGlobal = () => {
+    getAll()
+      .then((res) => {
+        setReportGlobal(res.data);
+      })
+      .catch((error) => alert(error));
+  };
 
   return (
     <Grid container>
