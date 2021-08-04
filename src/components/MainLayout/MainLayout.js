@@ -10,10 +10,13 @@ import AppBar from "@material-ui/core/AppBar";
 import { Brightness2, Brightness7 } from "@material-ui/icons";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Switch } from "react-router";
+import { useDispatch } from "react-redux";
+import { GlobalActions } from "../../redux/slices/globalSlice";
 
 function MainLayout(props) {
   const history = useHistory();
   const [themeMode, setThemeMode] = useState("light");
+  const dispatch = useDispatch();
 
   const theme = createTheme({
     palette: {
@@ -29,6 +32,14 @@ function MainLayout(props) {
   };
   const handleDarkMode = () => {
     setThemeMode("dark");
+  };
+
+  const handleLinkToNewsPage = () => {
+    dispatch(GlobalActions.loadingPage(true));
+    setTimeout(() => {
+      dispatch(GlobalActions.loadingPage(false));
+    }, 2000);
+    history.push("/news");
   };
 
   const handleLogout = () => {
@@ -81,9 +92,9 @@ function MainLayout(props) {
               <Link to="/">Coronavirus (COVID-19) Dashboard</Link>
             </Typography>
 
-            <Link to="/news">
-              <Button color="inherit">News</Button>
-            </Link>
+            <Button color="inherit" onClick={handleLinkToNewsPage}>
+              News
+            </Button>
 
             {themeMode === "light" ? (
               <IconButton color="inherit" onClick={handleDarkMode}>
@@ -95,9 +106,9 @@ function MainLayout(props) {
               </IconButton>
             )}
 
-            <Link to="/login" onClick={handleLogout}>
-              <Button color="inherit">Logout</Button>
-            </Link>
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
         {props.children}

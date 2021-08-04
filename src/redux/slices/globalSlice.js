@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
+  isLoading: false,
 };
 
 const globalSlice = createSlice({
   name: "globalSlice",
   initialState: initialState,
   reducers: {
-    
+    loadingPage(state, action) {
+      state.isLoading = action.payload;
+    },
   },
 });
 

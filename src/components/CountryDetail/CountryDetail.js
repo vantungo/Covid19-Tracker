@@ -37,13 +37,18 @@ function CountryDetail(props) {
   };
 
   return (
-    <MainLayout>
-      <div style={{ padding: "24px" }}>
-        <NationalFlag countryInfo={countryInfo} countryDetail={countryDetail} />
-        <CountryHighlight countryDetail={countryDetail} />
-        <CountryCharts reportCountryHistory={reportCountryHistory} />
-      </div>
-    </MainLayout>
+    <div>
+      <MainLayout>
+        <div style={{ padding: "24px" }}>
+          <NationalFlag
+            countryInfo={countryInfo}
+            countryDetail={countryDetail}
+          />
+          <CountryHighlight countryDetail={countryDetail} />
+          <CountryCharts reportCountryHistory={reportCountryHistory} />
+        </div>
+      </MainLayout>
+    </div>
   );
 }
 
