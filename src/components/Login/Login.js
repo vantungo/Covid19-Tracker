@@ -4,17 +4,24 @@ import userImg from "./user.png";
 import passwordImg from "./password.png";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { GlobalActions } from "../../redux/slices/globalSlice";
 
 function Login(props) {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const login = (e) => {
     if (username === "" && password === "") {
       alert("Enter username or password!");
     } else if (username === "admin" && password === "admin") {
+      dispatch(GlobalActions.loadingPage(true));
       localStorage.setItem("token", true);
+      setTimeout(() => {
+        dispatch(GlobalActions.loadingPage(false));
+      }, 2000);
       history.push("/");
     } else {
       Swal.fire({

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Overview from "../Overview/Overview";
 import DataTable from "../DataTable/DataTable";
+import { useDispatch } from "react-redux";
+import { GlobalActions } from "../../../redux/slices/globalSlice";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,8 +64,20 @@ const useStyles = makeStyles((theme) => ({
 function TabContent(themeMode) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(GlobalActions.loadingPage(true));
+    setTimeout(() => {
+      dispatch(GlobalActions.loadingPage(false));
+    }, 2000);
+  }, []);
 
   const handleChange = (event, newValue) => {
+    dispatch(GlobalActions.loadingPage(true));
+    setTimeout(() => {
+      dispatch(GlobalActions.loadingPage(false));
+    }, 2000);
     setValue(newValue);
   };
   return (

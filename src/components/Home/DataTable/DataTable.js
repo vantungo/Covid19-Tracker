@@ -3,10 +3,13 @@ import { useHistory } from "react-router-dom";
 import ListCountries from "./ListCountries/ListCountries";
 import SearchCountry from "./SearchCountry/SearchCountry";
 import { getCountries, getCountryDetail } from "./../../../apis/apis";
+import { useDispatch } from "react-redux";
+import { GlobalActions } from "../../../redux/slices/globalSlice";
 
 function DataTable(props) {
   const [countries, setCountries] = useState([]);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllCountries();
@@ -19,7 +22,11 @@ function DataTable(props) {
   };
 
   const handleOnChange = (e, value) => {
-    history.push(`/detail/${value.country.toLowerCase()}`)
+    dispatch(GlobalActions.loadingPage(true));
+    setTimeout(() => {
+      dispatch(GlobalActions.loadingPage(false));
+    }, 2000);
+    history.push(`/detail/${value.country.toLowerCase()}`);
   };
 
   return (
