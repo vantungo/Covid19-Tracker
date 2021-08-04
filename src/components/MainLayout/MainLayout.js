@@ -54,6 +54,9 @@ function MainLayout(props) {
           outline: "none",
         },
       },
+      "& button": {
+        outline: "none",
+      },
     },
     menuButton: {
       marginRight: theme.spacing(2),

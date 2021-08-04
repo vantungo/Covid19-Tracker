@@ -5,9 +5,23 @@ import { Typography, Grid, Container } from "@material-ui/core";
 import { getNews } from "../../apis/apis";
 import { useDispatch } from "react-redux";
 import { GlobalActions } from "../../redux/slices/globalSlice";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    "& .MuiContainer-root": {
+      [theme.breakpoints.up("sm")]: {
+        marginRight: "38px",
+      },
+    },
+  },
+}));
 function News(props) {
   const [news, setNews] = useState([]);
   const dispatch = useDispatch();
+  const classes = useStyles();
+
   useEffect(() => {
     getAllNews();
   }, []);
@@ -29,13 +43,13 @@ function News(props) {
       });
   };
   return (
-    <MainLayout>
+    <div className={classes.root}>
       <Container>
-        <div style={{ marginTop: "2em" }}>
+        <div style={{ paddingTop: "1em" }}>
           <ListNews listNews={news} />
         </div>
       </Container>
-    </MainLayout>
+    </div>
   );
 }
 

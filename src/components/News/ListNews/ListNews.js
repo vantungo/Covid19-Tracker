@@ -9,20 +9,22 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundColor: theme.palette.background.paper,
     maxWidth: 345,
-    "& .MuiCardContent-root":{
-        minHeight:"308px"
-    }
+    "& .MuiCardContent-root": {
+      minHeight: "308px",
+    },
+    marginBottom: "1.5em",
   },
-});
+}));
 
 function ListNews({ listNews }) {
   const classes = useStyles();
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container>
         {listNews &&
           listNews.map((item) => (
             <Grid item sm={4} xs={12}>
@@ -48,14 +50,6 @@ function ListNews({ listNews }) {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                  </Button>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
               </Card>
             </Grid>
           ))}

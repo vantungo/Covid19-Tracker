@@ -6,8 +6,16 @@ import CountryHighlight from "./CountryHighlight/CountryHighlight";
 import { Grid } from "@material-ui/core";
 import NationalFlag from "./NationalFlag/NationalFlag";
 import MainLayout from "../MainLayout/MainLayout";
+import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 function CountryDetail(props) {
+  const classes = useStyles();
   const { country } = useParams();
   const [countryDetail, setCountryDetail] = useState([]);
   const [countryInfo, setCountryInfo] = useState([]);
@@ -37,18 +45,16 @@ function CountryDetail(props) {
   };
 
   return (
-    <div>
-      <MainLayout>
-        <div style={{ padding: "24px" }}>
-          <NationalFlag
-            countryInfo={countryInfo}
-            countryDetail={countryDetail}
-          />
-          <CountryHighlight countryDetail={countryDetail} />
-          <CountryCharts reportCountryHistory={reportCountryHistory} />
+        <div className={classes.root}>
+          <Box style={{ padding: "24px" }}>
+            <NationalFlag
+              countryInfo={countryInfo}
+              countryDetail={countryDetail}
+            />
+            <CountryHighlight countryDetail={countryDetail} />
+            <CountryCharts reportCountryHistory={reportCountryHistory} />
+          </Box>
         </div>
-      </MainLayout>
-    </div>
   );
 }
 
