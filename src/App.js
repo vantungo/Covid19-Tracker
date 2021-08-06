@@ -9,6 +9,7 @@ import CountryDetail from "./components/CountryDetail/CountryDetail";
 import News from "./components/News/News";
 import NotFound from "./components/NotFound/NotFound";
 import Loading from "./components/Loading/Loading";
+import Register from "./components/Register/Register";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Switch>
           <AuthRoute exact path="/login" component={Login} />
+          <AuthRoute exact path="/signup" component={Register} />
           <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute
             exact
