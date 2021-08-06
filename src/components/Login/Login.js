@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -38,30 +38,75 @@ function Login(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [user, setUser] = useState({ username: "", password: "" });
 
-  // const login = (e) => {
-  //   if (username === "" && password === "") {
-  //     alert("Enter username or password!");
-  //   } else if (username === "admin" && password === "admin") {
-  //     dispatch(GlobalActions.loadingPage(true));
-  //     localStorage.setItem("token", true);
-  //     setTimeout(() => {
-  //       dispatch(GlobalActions.loadingPage(false));
-  //     }, 2000);
-  //     history.push("/");
-  //   } else {
-  //     Swal.fire({
-  //       position: "center-center",
-  //       icon: "error",
-  //       title: "Login failed!",
-  //       text: "Your email or password is incorrect.",
-  //       showConfirmButton: false,
-  //     });
-  //   }
-  // };
+  useEffect(() => {
+    handleSetUser();
+  }, []);
 
-  const handleLinkToRegister = () => {
-    history.push("/signup");
+  const handleSetUser = () => {
+    let user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      return localStorage.setItem(
+        "user",
+        JSON.stringify([{ username: "admin", password: "admin" }])
+      );
+    }
+    return user;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const checkUserExist = (users) => {
+    let checkUser = JSON.parse(localStorage.getItem("user"));
+    if (checkUser.length > 0) {
+      const userInfo = checkUser.find(
+        (item) => item.username === users.username
+      );
+      if (userInfo) return userInfo;
+    }
+    return null;
+  };
+
+  const handleLogin = () => {
+    const userChecked = checkUserExist(user);
+    if (user.username === "" || user.password === "") {
+      Swal.fire({
+        position: "center-center",
+        icon: "error",
+        title: "Login failed!",
+        text: "Please enter your username or password.",
+        showConfirmButton: false,
+      });
+    } else if (
+      user.username === userChecked?.username &&
+      user.password === userChecked?.password
+    ) {
+      localStorage.setItem(
+        "token",
+        JSON.stringify({ name: user.username, token: true })
+      );
+      Swal.fire({
+        position: "center-center",
+        icon: "success",
+        title: "Login successful!",
+        showConfirmButton: false,
+      });
+      setTimeout(() => {
+        history.push("/");
+      }, 2000);
+    } else {
+      Swal.fire({
+        position: "center-center",
+        icon: "error",
+        title: "Login failed!",
+        text: "Your username or password is incorrect.",
+        showConfirmButton: false,
+      });
+    }
   };
 
   return (
@@ -72,7 +117,7 @@ function Login(props) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign Ip
+          Sign In
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -85,6 +130,7 @@ function Login(props) {
             name="username"
             autoComplete="username"
             autoFocus
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -96,6 +142,7 @@ function Login(props) {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleInputChange}
           />
           <Button
             type="submit"
@@ -103,12 +150,13 @@ function Login(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleLogin}
           >
             Sign In
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="#" variant="body2" onClick={handleLinkToRegister}>
+              <Link to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
