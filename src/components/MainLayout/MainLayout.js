@@ -83,16 +83,16 @@ function MainLayout(props) {
       <ThemeProvider theme={theme}>
         <AppBar position="static">
           <Toolbar className={classes.navbar}>
-            <IconButton
+            {/* <IconButton
               edge="start"
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> */}
             <Typography variant="h6" className={classes.title}>
-              <Link to="/">Coronavirus (COVID-19) Dashboard</Link>
+              <Link to="/">Coronavirus Dashboard</Link>
             </Typography>
 
             <Button color="inherit" onClick={handleLinkToNewsPage}>
