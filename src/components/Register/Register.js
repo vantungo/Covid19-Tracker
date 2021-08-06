@@ -1,14 +1,10 @@
-import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
-import { GlobalActions } from "../../redux/slices/globalSlice";
+import React from "react";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
-import Link from '@material-ui/core/Link';
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -26,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%",
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -34,35 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Login(props) {
-  const history = useHistory();
-  const dispatch = useDispatch();
+function Register(props) {
   const classes = useStyles();
-
-  // const login = (e) => {
-  //   if (username === "" && password === "") {
-  //     alert("Enter username or password!");
-  //   } else if (username === "admin" && password === "admin") {
-  //     dispatch(GlobalActions.loadingPage(true));
-  //     localStorage.setItem("token", true);
-  //     setTimeout(() => {
-  //       dispatch(GlobalActions.loadingPage(false));
-  //     }, 2000);
-  //     history.push("/");
-  //   } else {
-  //     Swal.fire({
-  //       position: "center-center",
-  //       icon: "error",
-  //       title: "Login failed!",
-  //       text: "Your email or password is incorrect.",
-  //       showConfirmButton: false,
-  //     });
-  //   }
-  // };
-
-  const handleLinkToRegister = () => {
-    history.push("/signup");
-  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -72,7 +41,7 @@ function Login(props) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign Ip
+          Sign Up
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -97,6 +66,17 @@ function Login(props) {
             id="password"
             autoComplete="current-password"
           />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="confirmPassword"
+            label="Confirm password"
+            type="password"
+            id="confirmPassword"
+            autoComplete="current-password"
+          />
           <Button
             type="submit"
             fullWidth
@@ -104,12 +84,12 @@ function Login(props) {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Sign Up
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="#" variant="body2" onClick={handleLinkToRegister}>
-                {"Don't have an account? Sign Up"}
+              <Link href="#" variant="body2">
+                {"Already have an account? Sign In"}
               </Link>
             </Grid>
           </Grid>
@@ -119,4 +99,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Register;
