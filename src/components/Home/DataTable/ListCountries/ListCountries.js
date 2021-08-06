@@ -31,7 +31,7 @@ const columns = [
 
 function ListCountries({countries}) {
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 500, width: "100%", marginBottom:"70px"}}>
       <DataGrid
         rows={countries}
         columns={columns}

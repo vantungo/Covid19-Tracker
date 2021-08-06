@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Register(props) {
   const classes = useStyles();
+  const history = useHistory()
 
   return (
     <Container component="main" maxWidth="xs">
@@ -88,7 +90,7 @@ function Register(props) {
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to="/login" variant="body2">
                 {"Already have an account? Sign In"}
               </Link>
             </Grid>
