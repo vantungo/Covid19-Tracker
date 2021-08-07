@@ -27,8 +27,8 @@ function App() {
             path="/detail/:country"
             component={CountryDetail}
           />
-          <PrivateRoute exact path="/news" component={News} />
-          <Route component={NotFound}></Route>
+          <Route exact path="/news" component={News} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </>

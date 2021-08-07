@@ -18,5 +18,5 @@ export const getCountryHisTory = (country) =>
 
 export const getNews = () =>
   axios.get(
-    "https://newsapi.org/v2/everything?q=tesla&from=2021-07-04&sortBy=publishedAt&apiKey=fc8af3e7de314fd5906e0a24c11b336b"
+    "https://newsapi.org/v2/everything?q=tesla&from=2021-07-07&sortBy=publishedAt&apiKey=fc8af3e7de314fd5906e0a24c11b336b"
   );
