@@ -61,12 +61,12 @@ function Login(props) {
   };
 
   const checkUserExist = (users) => {
-    let checkUser = JSON.parse(localStorage.getItem("user"));
-    if (checkUser.length > 0) {
-      const userInfo = checkUser.find(
+    let userInfo = JSON.parse(localStorage.getItem("user"));
+    if (userInfo.length > 0) {
+      const checkUser = userInfo.find(
         (item) => item.username === users.username
       );
-      if (userInfo) return userInfo;
+      if (checkUser) return checkUser;
     }
     return null;
   };
@@ -99,13 +99,15 @@ function Login(props) {
         history.push("/");
       }, 2000);
     } else {
-      Swal.fire({
-        position: "center-center",
-        icon: "error",
-        title: "Login failed!",
-        text: "Your username or password is incorrect.",
-        showConfirmButton: false,
-      });
+      setTimeout(() => {
+        Swal.fire({
+          position: "center-center",
+          icon: "error",
+          title: "Login failed!",
+          text: "Your username or password is incorrect.",
+          showConfirmButton: false,
+        });
+      }, 2000);
     }
   };
 
