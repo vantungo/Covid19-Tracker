@@ -3,7 +3,7 @@ import ListNews from "./ListNews/ListNews";
 import MainLayout from "../MainLayout/MainLayout";
 import { Typography, Grid, Container } from "@material-ui/core";
 import { getNews } from "../../apis/apis";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { GlobalActions } from "../../redux/slices/globalSlice";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -19,8 +19,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 function News(props) {
   const [news, setNews] = useState([]);
+  const [themeModeNewsPage, setThemeModeNewsPage] = useState({});
   const dispatch = useDispatch();
   const classes = useStyles();
+  const themeMode = useSelector((state) => state.GlobalReducer.themeMode);
 
   useEffect(() => {
     getAllNews();
@@ -42,9 +44,22 @@ function News(props) {
         }, 2000);
       });
   };
+
+  useEffect(() => {
+    if (themeMode === "light") {
+      setThemeModeNewsPage({
+        backgroundColor: "white",
+      });
+    } else if (themeMode === "dark") {
+      setThemeModeNewsPage({
+        backgroundColor: "#424242",
+      });
+    }
+  }, [themeMode]);
+
   return (
     <MainLayout>
-      <div className={classes.root}>
+      <div className={classes.root} style={themeModeNewsPage}>
         <Container>
           <div style={{ paddingTop: "1em" }}>
             <ListNews listNews={news} />

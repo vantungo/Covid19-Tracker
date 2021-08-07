@@ -10,12 +10,13 @@ import AppBar from "@material-ui/core/AppBar";
 import { Brightness2, Brightness7 } from "@material-ui/icons";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Switch } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GlobalActions } from "../../redux/slices/globalSlice";
 
 function MainLayout(props) {
   const history = useHistory();
-  const [themeMode, setThemeMode] = useState("light");
+  // const [themeMode, setThemeMode] = useState("light");
+  const themeMode = useSelector((state) => state.GlobalReducer.themeMode);
   const dispatch = useDispatch();
 
   const theme = createTheme({
@@ -28,10 +29,10 @@ function MainLayout(props) {
   });
 
   const handleLightMode = () => {
-    setThemeMode("light");
+    dispatch(GlobalActions.themeModePage("light"));
   };
   const handleDarkMode = () => {
-    setThemeMode("dark");
+    dispatch(GlobalActions.themeModePage("dark"));
   };
 
   const handleLinkToNewsPage = () => {
@@ -51,6 +52,7 @@ function MainLayout(props) {
   };
   const useStyles = makeStyles((theme) => ({
     root: {
+      backgroundColor: theme.palette.background.paper,
       flexGrow: 1,
       "& > header": {
         "& .MuiIconButton-root": {
