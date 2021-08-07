@@ -44,6 +44,9 @@ function MainLayout(props) {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    history.push("/news");
+  };
+  const handleLogin = () => {
     history.push("/login");
   };
   const useStyles = makeStyles((theme) => ({
@@ -108,10 +111,15 @@ function MainLayout(props) {
                 <Brightness7 />
               </IconButton>
             )}
-
-            <Button color="inherit" onClick={handleLogout}>
-              Logout
-            </Button>
+            {localStorage.getItem("token") ? (
+              <Button color="inherit" onClick={handleLogout}>
+                Logout
+              </Button>
+            ) : (
+              <Button color="inherit" onClick={handleLogin}>
+                Login
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
         {props.children}

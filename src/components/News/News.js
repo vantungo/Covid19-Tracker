@@ -43,13 +43,15 @@ function News(props) {
       });
   };
   return (
-    <div className={classes.root}>
-      <Container>
-        <div style={{ paddingTop: "1em" }}>
-          <ListNews listNews={news} />
-        </div>
-      </Container>
-    </div>
+    <MainLayout>
+      <div className={classes.root}>
+        <Container>
+          <div style={{ paddingTop: "1em" }}>
+            <ListNews listNews={news} />
+          </div>
+        </Container>
+      </div>
+    </MainLayout>
   );
 }
 
