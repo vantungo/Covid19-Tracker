@@ -43,7 +43,7 @@ function MainLayout(props) {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
     history.push("/login");
   };
   const useStyles = makeStyles((theme) => ({
