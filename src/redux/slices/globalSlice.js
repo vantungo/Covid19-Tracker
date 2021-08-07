@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
+  themeMode: "light",
 };
 
 const globalSlice = createSlice({
@@ -9,6 +10,9 @@ const globalSlice = createSlice({
   reducers: {
     loadingPage(state, action) {
       state.isLoading = action.payload;
+    },
+    themeModePage(state, action) {
+      state.themeMode = action.payload;
     },
   },
 });
