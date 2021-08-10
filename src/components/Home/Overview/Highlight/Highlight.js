@@ -1,11 +1,13 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -25,12 +27,10 @@ const useStyles = makeStyles({
 });
 function Highlight({ reportGlobal }) {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
-    <div style={{marginTop:"2em"}}>
-      {/* <div style={{ textAlign: "center", marginBottom: "2em" }}>
-        <Typography variant="h4">Global Situation</Typography>
-      </div> */}
+    <Box style={{marginTop:"2em"}}>
       <Grid container spacing="3">
         <Grid item sm={4} xs={12}>
           <Card className={classes.root} variant="outlined">
@@ -40,7 +40,7 @@ function Highlight({ reportGlobal }) {
                 color="textSecondary"
                 gutterBottom
               >
-                Confirmed cases
+                {t("Confirmed cases.1")}
               </Typography>
               <Typography variant="h6">{reportGlobal.cases}</Typography>
             </CardContent>
@@ -55,7 +55,7 @@ function Highlight({ reportGlobal }) {
                 color="textSecondary"
                 gutterBottom
               >
-                Deaths
+                {t("Deaths.1")}
               </Typography>
               <Typography variant="h6">{reportGlobal.deaths}</Typography>
             </CardContent>
@@ -70,14 +70,14 @@ function Highlight({ reportGlobal }) {
                 color="textSecondary"
                 gutterBottom
               >
-                Recovered
+                {t("Recovered.1")}
               </Typography>
               <Typography variant="h6">{reportGlobal.recovered}</Typography>
             </CardContent>
           </Card>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
 

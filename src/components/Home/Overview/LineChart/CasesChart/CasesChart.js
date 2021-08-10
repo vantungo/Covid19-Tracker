@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import HighchartsReact from "highcharts-react-official";
 import { Highcharts } from "highcharts";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 const generateOptions = (date, report) => {
   return {
@@ -52,6 +53,7 @@ const generateOptions = (date, report) => {
 function CasesChart({ report }) {
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState("all");
+  const { t } = useTranslation();
   useEffect(() => {
     let customData = [];
     let reportCases = [];
@@ -79,7 +81,9 @@ function CasesChart({ report }) {
 
   return (
     <div>
-      <Typography variant="h6" color="textSecondary">Confirmed cases</Typography>
+      <Typography variant="h6" color="textSecondary">
+        {t("Confirmed cases.1")}
+      </Typography>
       <ButtonGroup
         size="small"
         aria-label="small outlined button group"
@@ -92,19 +96,19 @@ function CasesChart({ report }) {
           color={reportType === "all" ? "secondary" : ""}
           onClick={() => setReportType("all")}
         >
-          All
+          {t("All.1")}
         </Button>
         <Button
           color={reportType === "30" ? "secondary" : ""}
           onClick={() => setReportType("30")}
         >
-          Monthly
+          {t("Monthly.1")}
         </Button>
         <Button
           color={reportType === "7" ? "secondary" : ""}
           onClick={() => setReportType("7")}
         >
-          Weekly
+          {t("Weekly.1")}
         </Button>
       </ButtonGroup>
       <HighchartsReact highcharts={Highcharts} options={options} />

@@ -1,0 +1,53 @@
+{
+    "Login": {
+        "1": "Đăng nhập"
+    },
+    "Logout": {
+        "1": "Đăng xuất"
+    },
+    "Overview": {
+        "1": "Tổng quan"
+    },
+    "Data Table": {
+        "1": "Bảng thông kê dữ liệu"
+    },
+    "News": {
+        "1": "Tin tức"
+    },
+    "Confirmed cases":{
+        "1":"Số ca nhiễm"
+    },
+    "Deaths":{
+        "1":"Số ca tử vong"
+    },
+    "Recovered":{
+        "1":"Đã hồi phục"
+    },
+    "All":{
+        "1":"Tất cả"
+    },
+    "Monthly":{
+        "1":"Tháng"
+    },
+    "Weekly":{
+        "1":"Tuần"
+    },
+    "Country":{
+        "1":"Quốc gia"
+    },
+    "Cases - cumulative total":{
+        "1": "Số ca nhiễm - Tổng số tích lũy"
+    },
+    "Cases - newly reported in last 24 hours":{
+        "1":"Số ca nhiễm - mới được báo cáo trong 24 giờ qua"
+    },
+    "Deaths - cumulative total":{
+        "1":"Số ca tử vong - Tổng số tích lũy"
+    },
+    "Deaths - newly reported in last 24 hours":{
+        "1":"Số ca tử vong - mới được báo cáo trong 24 giờ qua"
+    },
+    "Search country":{
+        "1":"Tìm kiếm quốc gia"
+    }
+}
