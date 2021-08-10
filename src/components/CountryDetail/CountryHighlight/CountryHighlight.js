@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   root: {
@@ -23,6 +24,8 @@ const useStyles = makeStyles({
 });
 function CountryHighlight({ countryDetail }) {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   return (
     <div>
       <Grid container spacing="3">
@@ -33,7 +36,7 @@ function CountryHighlight({ countryDetail }) {
                 className={classes.title}
                 gutterBottom
               >
-                Confirmed cases
+                {t("Confirmed cases.1")}
               </Typography>
               <Typography variant="h6">{countryDetail.cases}</Typography>
             </CardContent>
@@ -47,7 +50,7 @@ function CountryHighlight({ countryDetail }) {
                 className={classes.title}
                 gutterBottom
               >
-                Deaths
+                {t("Deaths.1")}
               </Typography>
               <Typography variant="h6">{countryDetail.deaths}</Typography>
             </CardContent>
@@ -61,7 +64,7 @@ function CountryHighlight({ countryDetail }) {
                 className={classes.title}
                 gutterBottom
               >
-                Recovered
+                {t("Recovered.1")}
               </Typography>
               <Typography variant="h6">{countryDetail.recovered}</Typography>
             </CardContent>

@@ -10,6 +10,7 @@ import Overview from "../Overview/Overview";
 import DataTable from "../DataTable/DataTable";
 import { useDispatch } from "react-redux";
 import { GlobalActions } from "../../../redux/slices/globalSlice";
+import { useTranslation } from 'react-i18next';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,12 +50,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     "& > header": {
-      // backgroundColor: "none",
       boxShadow: "none",
     },
     "& .MuiTabs-flexContainer": {
       justifyContent: "flex-end",
-      // color: "#0093D5",
     },
     "& button": {
       outline: "none",
@@ -65,6 +64,7 @@ function TabContent(themeMode) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(GlobalActions.loadingPage(true));
@@ -88,8 +88,8 @@ function TabContent(themeMode) {
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="Overview" {...a11yProps(0)} />
-          <Tab label="Data Table" {...a11yProps(1)} />
+          <Tab label={t("Overview.1")} {...a11yProps(0)} />
+          <Tab label={t("Data Table.1")} {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

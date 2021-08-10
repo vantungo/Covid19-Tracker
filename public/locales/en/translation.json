@@ -1,0 +1,53 @@
+{
+    "Login": {
+        "1": "Login"
+    },
+    "Logout": {
+        "1": "Logout"
+    },
+    "Overview": {
+        "1": "Overview"
+    },
+    "Data Table": {
+        "1": "Data Table"
+    },
+    "News": {
+        "1": "News"
+    },
+    "Confirmed cases":{
+        "1":"Confirmed cases"
+    },
+    "Deaths":{
+        "1":"Deaths"
+    },
+    "Recovered":{
+        "1":"Recovered"
+    },
+    "All":{
+        "1":"All"
+    },
+    "Monthly":{
+        "1":"Monthly"
+    },
+    "Weekly":{
+        "1":"Weekly"
+    },
+    "Country":{
+        "1":"Country"
+    },
+    "Cases - cumulative total":{
+        "1": "Cases - cumulative total"
+    },
+    "Cases - newly reported in last 24 hours":{
+        "1":"Cases - newly reported in last 24 hours"
+    },
+    "Deaths - cumulative total":{
+        "1":"Deaths - cumulative total"
+    },
+    "Deaths - newly reported in last 24 hours":{
+        "1":"Deaths - newly reported in last 24 hours"
+    },
+    "Search country":{
+        "1":"Search country"
+    }
+}

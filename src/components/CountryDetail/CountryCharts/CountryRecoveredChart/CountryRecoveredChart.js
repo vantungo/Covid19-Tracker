@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import HighchartsReact from "highcharts-react-official";
 import { Highcharts } from "highcharts";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 const generateOptions = (date, report) => {
   return {
@@ -52,6 +53,8 @@ const generateOptions = (date, report) => {
 function CountryRecoveredChart({ reportCountryHistory }) {
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState("all");
+  const { t } = useTranslation();
+
   useEffect(() => {
     let customData = [];
     let reportRecoveredCountry = [];
@@ -83,7 +86,7 @@ function CountryRecoveredChart({ reportCountryHistory }) {
   return (
     <div>
       <Typography variant="h6" color="textSecondary">
-      Recovered
+        {t("Recovered.1")}
       </Typography>
       <ButtonGroup
         size="small"
@@ -97,19 +100,19 @@ function CountryRecoveredChart({ reportCountryHistory }) {
           color={reportType === "all" ? "secondary" : ""}
           onClick={() => setReportType("all")}
         >
-          All
+          {t("All.1")}
         </Button>
         <Button
           color={reportType === "30" ? "secondary" : ""}
           onClick={() => setReportType("30")}
         >
-          Monthly
+          {t("Monthly.1")}
         </Button>
         <Button
           color={reportType === "7" ? "secondary" : ""}
           onClick={() => setReportType("7")}
         >
-          Weekly
+          {t("Weekly.1")}
         </Button>
       </ButtonGroup>
       <HighchartsReact highcharts={Highcharts} options={options} />
