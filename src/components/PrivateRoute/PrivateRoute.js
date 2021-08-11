@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Redirect, Route } from "react-router-dom";
 import MainLayout from "../MainLayout/MainLayout";
 import { checkToken } from "../../utils/localStorage";

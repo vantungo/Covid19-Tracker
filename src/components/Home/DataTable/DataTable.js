@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import ListCountries from "./ListCountries/ListCountries";
 import SearchCountry from "./SearchCountry/SearchCountry";
-import { getCountries, getCountryDetail } from "./../../../apis/apis";
+import { getCountries } from "./../../../apis/apis";
 import { useDispatch } from "react-redux";
 import { GlobalActions } from "../../../redux/slices/globalSlice";
 

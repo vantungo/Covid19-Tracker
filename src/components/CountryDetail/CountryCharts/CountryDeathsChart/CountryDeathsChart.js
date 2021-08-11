@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import HighchartsReact from "highcharts-react-official";
 import { Highcharts } from "highcharts";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const generateOptions = (date, report) => {
   return {
@@ -53,6 +54,7 @@ function CountryDeathsChart({ reportCountryHistory }) {
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState("all");
   const { t } = useTranslation();
+  const themeMode = useSelector((state) => state.GlobalReducer.themeMode);
 
   useEffect(() => {
     let customData = [];
@@ -82,10 +84,26 @@ function CountryDeathsChart({ reportCountryHistory }) {
 
     setOptions(generateOptions(customData, reportCountryHistory.deaths));
   }, [reportCountryHistory, reportType]);
+
+  useEffect(() => {
+    if (themeMode === "light") {
+      setOptions({
+        chart: {
+          backgroundColor: "white",
+        },
+      });
+    } else if (themeMode === "dark") {
+      setOptions({
+        chart: {
+          backgroundColor: "#424242",
+        },
+      });
+    }
+  }, [themeMode]);
   return (
     <div>
       <Typography variant="h6" color="textSecondary">
-      {t("Deaths.1")}
+        {t("Deaths.1")}
       </Typography>
       <ButtonGroup
         size="small"

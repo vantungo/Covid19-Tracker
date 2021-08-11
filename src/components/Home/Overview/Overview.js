@@ -5,7 +5,6 @@ import Highlight from "./Highlight/Highlight";
 import { Grid } from "@material-ui/core";
 import { getAll, getCountries, getAllHistory } from "./../../../apis/apis";
 import { transformToMapData } from "../../../utils/utils";
-import { Box } from "@material-ui/core";
 
 function Overview(props) {
   const [countries, setCountries] = useState();

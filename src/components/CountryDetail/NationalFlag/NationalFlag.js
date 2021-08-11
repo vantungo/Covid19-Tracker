@@ -1,5 +1,4 @@
 import React from "react";
-import CardMedia from "@material-ui/core/CardMedia";
 import { Typography, Box } from "@material-ui/core";
 
 function NationalFlag({ countryInfo, countryDetail }) {
