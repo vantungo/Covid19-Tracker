@@ -30,25 +30,25 @@ const initOptions = {
   colorAxis: {
     dataClasses: [
       {
-        color: "#FFC4AA",
+        color: "#95DCF4",
         from: 0,
         name: "cases <100K",
         to: 100000,
       },
       {
-        color: "#FF8A66",
+        color: "#00ACE3",
         from: 1000000,
         name: "100K< cases <1M",
         to: 1e6,
       },
       {
-        color: "#FF392B",
+        color: "#008EBC",
         from: 1e6,
         name: "1M< cases <10M",
         to: 1e7,
       },
       {
-        color: "#B71525",
+        color: "#007092",
         from: 1e7,
         name: "cases >10M",
       },
@@ -84,6 +84,7 @@ const initOptions = {
 
 function Map({ mapData, data }) {
   const [options, setOptions] = useState({});
+  // const [mapLoaded, setMapLoaded] = useState(false);
   const themeMode = useSelector((state) => state.GlobalReducer.themeMode);
 
   useEffect(() => {
@@ -117,6 +118,8 @@ function Map({ mapData, data }) {
           },
         ],
       }));
+
+      // if (!mapLoaded) setMapLoaded(true);
     }
   }, [mapData, data]);
 
@@ -135,6 +138,7 @@ function Map({ mapData, data }) {
       });
     }
   }, [themeMode]);
+  // if (!mapLoaded) return null;
 
   return (
     <HighchartsReact
