@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ListNews from "./ListNews/ListNews";
 import MainLayout from "../MainLayout/MainLayout";
-import { Typography, Grid, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { getNews } from "../../apis/apis";
 import { useSelector, useDispatch } from "react-redux";
 import { GlobalActions } from "../../redux/slices/globalSlice";

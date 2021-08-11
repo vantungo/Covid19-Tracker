@@ -1,8 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useDispatch } from "react-redux";
-import { GlobalActions } from "../../redux/slices/globalSlice";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -36,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props) {
   const history = useHistory();
-  const dispatch = useDispatch();
   const classes = useStyles();
   const [user, setUser] = useState({ username: "", password: "" });
 

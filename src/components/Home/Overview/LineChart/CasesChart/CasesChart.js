@@ -3,6 +3,7 @@ import HighchartsReact from "highcharts-react-official";
 import { Highcharts } from "highcharts";
 import { Button, ButtonGroup, Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
+import { useSelector } from 'react-redux';
 
 const generateOptions = (date, report) => {
   return {
@@ -54,6 +55,7 @@ function CasesChart({ report }) {
   const [options, setOptions] = useState({});
   const [reportType, setReportType] = useState("all");
   const { t } = useTranslation();
+  const themeMode = useSelector((state) => state.GlobalReducer.themeMode);
   useEffect(() => {
     let customData = [];
     let reportCases = [];
@@ -78,6 +80,22 @@ function CasesChart({ report }) {
 
     setOptions(generateOptions(customData, report.cases));
   }, [report, reportType]);
+
+  useEffect(() => {
+    if (themeMode === "light") {
+      setOptions({
+        chart: {
+          backgroundColor: "white",
+        },
+      });
+    } else if (themeMode === "dark") {
+      setOptions({
+        chart: {
+          backgroundColor: "#424242",
+        },
+      });
+    }
+  }, [themeMode]);
 
   return (
     <div>

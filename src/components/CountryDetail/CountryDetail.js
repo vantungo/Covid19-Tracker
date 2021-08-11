@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import { getCountryHisTory, getCountryDetail } from "./../../apis/apis";
 import CountryCharts from "./CountryCharts/CountryCharts";
 import CountryHighlight from "./CountryHighlight/CountryHighlight";
-import { Grid } from "@material-ui/core";
 import NationalFlag from "./NationalFlag/NationalFlag";
-import MainLayout from "../MainLayout/MainLayout";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 

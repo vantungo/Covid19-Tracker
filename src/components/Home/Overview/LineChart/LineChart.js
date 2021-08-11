@@ -2,7 +2,7 @@ import React from "react";
 import CasesChart from "./CasesChart/CasesChart";
 import DeathsChart from "./DeathsChart/DeathsChart";
 import RecoveredChart from "./RecoveredChart/RecoveredChart";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 
 function LineChart({ reportHistory }) {
   return (

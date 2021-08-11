@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import highchartsMap from "highcharts/modules/map";
 import { cloneDeep } from "lodash";
+import { useSelector } from "react-redux";
 
 // Load Highcharts modules
 highchartsMap(Highcharts);
@@ -12,6 +13,16 @@ const initOptions = {
   },
   title: {
     text: null,
+    style: {
+      color: "#000",
+      font: 'bold 16px "Trebuchet MS", Verdana, sans-serif',
+    },
+  },
+  subtitle: {
+    style: {
+      color: "#666666",
+      font: 'bold 12px "Trebuchet MS", Verdana, sans-serif',
+    },
   },
   mapNavigation: {
     enabled: true,
@@ -47,6 +58,13 @@ const initOptions = {
     layout: "horizontal",
     align: "right",
     verticalAlign: "bottom",
+    itemStyle: {
+      font: "9pt Trebuchet MS, Verdana, sans-serif",
+      color: "black",
+    },
+    itemHoverStyle: {
+      color: "gray",
+    },
   },
   responsive: {
     maxWidth: "100%",
@@ -66,7 +84,8 @@ const initOptions = {
 
 function Map({ mapData, data }) {
   const [options, setOptions] = useState({});
-  const [mapLoaded, setMapLoaded] = useState(false);
+  // const [mapLoaded, setMapLoaded] = useState(false);
+  const themeMode = useSelector((state) => state.GlobalReducer.themeMode);
 
   useEffect(() => {
     if (mapData && Object.keys(mapData).length) {
@@ -100,10 +119,26 @@ function Map({ mapData, data }) {
         ],
       }));
 
-      if (!mapLoaded) setMapLoaded(true);
+      // if (!mapLoaded) setMapLoaded(true);
     }
-  }, [mapData, mapLoaded, data]);
-  if (!mapLoaded) return null;
+  }, [mapData, data]);
+
+  useEffect(() => {
+    if (themeMode === "light") {
+      setOptions({
+        chart: {
+          backgroundColor: "white",
+        },
+      });
+    } else if (themeMode === "dark") {
+      setOptions({
+        chart: {
+          backgroundColor: "#424242",
+        },
+      });
+    }
+  }, [themeMode]);
+  // if (!mapLoaded) return null;
 
   return (
     <HighchartsReact
