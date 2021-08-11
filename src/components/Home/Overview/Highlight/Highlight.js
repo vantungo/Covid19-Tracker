@@ -5,7 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import CountUp from "react-countup";
 
 const useStyles = makeStyles({
   root: {
@@ -28,7 +29,7 @@ function Highlight({ reportGlobal }) {
   const { t } = useTranslation();
 
   return (
-    <Box style={{marginTop:"2em"}}>
+    <Box style={{ marginTop: "2em" }}>
       <Grid container spacing="3">
         <Grid item sm={4} xs={12}>
           <Card className={classes.root} variant="outlined">
@@ -40,7 +41,10 @@ function Highlight({ reportGlobal }) {
               >
                 {t("Confirmed cases.1")}
               </Typography>
-              <Typography variant="h6">{reportGlobal.cases}</Typography>
+              <Typography variant="h6">
+                {" "}
+                <CountUp end={reportGlobal.cases} separator=" " duration={3} />
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -55,7 +59,9 @@ function Highlight({ reportGlobal }) {
               >
                 {t("Deaths.1")}
               </Typography>
-              <Typography variant="h6">{reportGlobal.deaths}</Typography>
+              <Typography variant="h6">
+                <CountUp end={reportGlobal.deaths} separator=" " duration={3} />
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -70,7 +76,13 @@ function Highlight({ reportGlobal }) {
               >
                 {t("Recovered.1")}
               </Typography>
-              <Typography variant="h6">{reportGlobal.recovered}</Typography>
+              <Typography variant="h6">
+                <CountUp
+                  end={reportGlobal.recovered}
+                  separator=" "
+                  duration={3}
+                />
+              </Typography>
             </CardContent>
           </Card>
         </Grid>

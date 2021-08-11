@@ -30,25 +30,25 @@ const initOptions = {
   colorAxis: {
     dataClasses: [
       {
-        color: "#95DCF4",
+        color: "#FFC4AA",
         from: 0,
         name: "cases <100K",
         to: 100000,
       },
       {
-        color: "#00ACE3",
+        color: "#FF8A66",
         from: 1000000,
         name: "100K< cases <1M",
         to: 1e6,
       },
       {
-        color: "#008EBC",
+        color: "#FF392B",
         from: 1e6,
         name: "1M< cases <10M",
         to: 1e7,
       },
       {
-        color: "#007092",
+        color: "#B71525",
         from: 1e7,
         name: "cases >10M",
       },
