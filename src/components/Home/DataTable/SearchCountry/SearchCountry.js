@@ -1,27 +1,9 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useTranslation } from 'react-i18next';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    textAlign: "center",
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "18em",
-      [theme.breakpoints.up("sm")]: {
-        width: "35em",
-      },
-    },
-    "& input": {
-      padding: "12.5px 14px",
-      outline:"none"
-    },
-  },
-}));
 function SearchCountry({ countries, value, handleOnChange }) {
-  const classes = useStyles();
   const { t } = useTranslation();
 
   return (
