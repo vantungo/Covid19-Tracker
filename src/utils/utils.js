@@ -1,9 +1,9 @@
 export const checkColor = (number) => {
   if (number < 0) return;
-  if (number >= 0 && number < 1e5) return "#95DCF4";
-  if (number >= 1e5 && number < 1e6) return "#00ACE3";
-  if (number >= 1e6 && number < 1e7) return "#008EBC";
-  if (number >= 1e7) return "#007092";
+  if (number >= 0 && number < 1e5) return "#FFC4AA";
+  if (number >= 1e5 && number < 1e6) return "#FF8A66";
+  if (number >= 1e6 && number < 1e7) return "#FF392B";
+  if (number >= 1e7) return "#B71525";
 
 };
 
