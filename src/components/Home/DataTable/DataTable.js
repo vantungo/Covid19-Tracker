@@ -26,7 +26,7 @@ function DataTable(props) {
     setTimeout(() => {
       dispatch(GlobalActions.loadingPage(false));
     }, 2000);
-    history.push(`/detail/${value.country.toLowerCase()}`);
+    history.push(`/detail/${value.countryInfo.iso2.toLowerCase()}`);
   };
 
   return (
