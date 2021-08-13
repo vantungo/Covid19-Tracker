@@ -26,7 +26,7 @@ function ListNews({ listNews }) {
         {listNews &&
           listNews.map((item) => (
             <Grid item sm={4} xs={12}>
-              <Card className={classes.root} key={item.publishedAt}>
+              <Card className={classes.root} key={item.source.id}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
