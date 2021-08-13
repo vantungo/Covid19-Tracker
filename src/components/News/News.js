@@ -31,7 +31,7 @@ function News(props) {
     dispatch(GlobalActions.loadingPage(true));
     getNews()
       .then((res) => {
-        setNews(res.data.articles);
+        setNews(res.data);
         setTimeout(() => {
           dispatch(GlobalActions.loadingPage(false));
         }, 2000);
