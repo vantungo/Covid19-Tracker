@@ -10,6 +10,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Loading from "./components/Loading/Loading";
 import Register from "./components/Register/Register";
 import { useSelector } from "react-redux";
+import NewsDetail from './components/NewsDetail/NewsDetail';
 
 function App() {
   const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
@@ -27,6 +28,7 @@ function App() {
             component={CountryDetail}
           />
           <Route exact path="/news" component={News} />
+          {/* <Route exact path="/news/detail" component={NewsDetail} /> */}
           <Route component={NotFound} />
         </Switch>
       </Router>
